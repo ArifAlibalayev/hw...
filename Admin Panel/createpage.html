@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Page</title>
+    <link rel="stylesheet" href="./create.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="createwrap">
+        <form id="form">
+            <input type="text" class="newname" placeholder="  Enter Name">
+            <input type="text" class="newtype" placeholder="  Enter Type">
+            <input type="text" class="newurl" placeholder="  Enter Image Url">
+            <input type="submit" id="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        const formdoc = document.getElementById("form")
+        const input1 = document.querySelector('.newname')
+        const input2 = document.querySelector('.newtype')
+        const input3 = document.querySelector('.newurl')
+
+
+        formdoc.addEventListener("submit", function(e) {
+            e.preventDefault();
+            fetch("http://localhost:3000/Products/", {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    method: "POST",
+                    body: JSON.stringify({
+                        name: `${input1.value}`,
+                        type: `${input2.value}`,
+                        img_url: `${input3.value}`
+                    })
+                })
+                .then((res) => res.json())
+                .then(data => {
+                    console.log(data);
+                    location.href = "./index.html";
+                })
+                .catch(err => console.log(err));
+        })
+    </script>
+</body>
+
+</html>

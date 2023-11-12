@@ -1,0 +1,28 @@
+{
+    "Products": [{
+            "id": 1,
+            "img_url": "https://neurosciencenews.com/files/2018/06/probiotics-stress-neurosciencenews-public.jpg",
+            "name": "Yoghurt",
+            "type": "Dairy product"
+        },
+        {
+            "id": 2,
+            "img_url": "https://keepingitsimpleitalian.com/wp-content/uploads/2022/11/Baked-Italian-Sausage.jpg",
+            "name": "Sausage",
+            "type": "Products of Meat"
+        },
+        {
+            "id": 3,
+            "img_url": "https://images-prod.healthline.com/hlcmsresource/images/AN_images/healthiest-cheese-1296x728-swiss.jpg",
+            "name": "Cheese",
+            "type": "Dairy product"
+        },
+        {
+            "id": 4,
+            "img_url": "https://handletheheat.com/wp-content/uploads/2021/06/homemade-vanilla-ice-cream.jpg",
+            "name": "Ice Cream",
+            "type": "Dairy product"
+        }
+
+    ]
+}

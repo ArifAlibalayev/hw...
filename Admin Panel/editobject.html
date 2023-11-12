@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./edit.css">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat&family=Roboto&display=swap" rel="stylesheet"> -->
+
+</head>
+
+<body>
+
+
+    <form id="form">
+
+        <input type="text" id="url" placeholder="Put URL">
+        <input type="text" id="name" placeholder="Edit Name">
+        <input type="text" id="type" placeholder="Edit Type">
+        <input type="submit" id="submit" value="Submit">
+
+    </form>
+
+
+    <script>
+        const hash = window.location.hash.substring(1)
+        const docform = document.getElementById("form")
+        const Imgurl = document.getElementById("url")
+        const Name = document.getElementById("name")
+        const Type = document.getElementById("type")
+
+
+
+        docform.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const EditFunc = {
+                method: 'PUT',
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                },
+                body: JSON.stringify({
+                    photourl: `${Imgurl.value}`,
+                    name: `${Name.value}`,
+                    type: `${Type.value}`,
+                    id: hash
+                })
+
+            }
+
+            fetch("http://localhost:3000/Products/" + hash, EditFunc)
+
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('NO RESPONSE');
+                }
+                return res.json();
+                location.href = "./index.html";
+            })
+
+            .then(data => console.log(data))
+                .catch(err => console.log(err));
+        });
+    </script>
+</body>
+
+</html>
